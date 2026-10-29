@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 tag = sys.argv[1] if len(sys.argv) > 1 else "main"
 os.makedirs("figures", exist_ok=True)
 S = json.load(open(f"results/summary_{tag}.json"))
-show = ["raw(noRM)", "raw", "PS", "ZNE-exp", "PS+ZNE-lin", "PS+ZNE-exp", "GUESS-Pi+PS", "SA-v1-lin", "SA-ZNE"]
-cols = ["#999", "#bbb", "#8da0cb", "#66c2a5", "#fc8d62", "#e78ac3", "#a6d854", "#ffd92f", "#d62728"]
+show = ["raw(noRM)", "raw", "PS", "ZNE-exp", "PS+ZNE-lin", "PS+ZNE-exp", "SA-v1-lin", "SA-ZNE", "SA-ZNE-loglin"]
+cols = ["#999", "#bbb", "#8da0cb", "#66c2a5", "#fc8d62", "#e78ac3", "#ffd92f", "#a6d854", "#d62728"]
 
 # Fig 1: MAE per condition
 keys = list(S)
@@ -22,7 +22,7 @@ for ax, k in zip(axes.ravel(), keys):
     b, c, sch = k.split("|")
     ax.set_title(f"{b.replace('Fake','')} | {c} | {sch} folding", fontsize=10)
     ax.set_ylabel("mean |error| (95% CI)"); ax.set_yscale("log")
-fig.suptitle("Absolute error vs ideal Trotter value (6-qubit XXZ, 60 circuits x 2 observables, 20 shot-seeds each)")
+fig.suptitle(f"Absolute error vs ideal Trotter value (6-qubit XXZ, {S[keys[0]]['n_problems']} problems per panel, 20 shot-seeds each)")
 fig.tight_layout(); fig.savefig("figures/fig1_mae_by_condition.png", dpi=130); plt.close(fig)
 
 # Fig 2: paired scatter SA-ZNE vs best nominal baseline, all conditions
@@ -31,10 +31,9 @@ prob = df.groupby(["backend", "cond", "scheme", "inst", "steps", "obs", "method"
 fig, axes = plt.subplots(1, 2, figsize=(11, 5))
 for ax, cond in zip(axes, ["static", "drift"]):
     for (b, sch), g in prob[prob.cond == cond].groupby(["backend", "scheme"]):
-        best = S[f"{b}|{cond}|{sch}"]["best_nominal"]
-        ax.scatter(g[best], g["SA-ZNE"], s=10, alpha=.6, label=f"{b.replace('Fake','')}/{sch} (vs {best})")
+        ax.scatter(g["PS+ZNE-lin"], g["SA-ZNE-loglin"], s=10, alpha=.6, label=f"{b.replace('Fake','')}/{sch}")
     lim = [1e-4, 0.3]; ax.plot(lim, lim, "k--", lw=1); ax.set_xscale("log"); ax.set_yscale("log"); ax.set_xlim(lim); ax.set_ylim(lim)
-    ax.set_xlabel("best nominal-λ baseline |error|"); ax.set_ylabel("SA-ZNE |error|"); ax.set_title(f"{cond}: points below diagonal = SA-ZNE wins")
+    ax.set_xlabel("PS+ZNE-lin |error| (nominal λ)"); ax.set_ylabel("SA-ZNE-loglin |error|"); ax.set_title(f"{cond}: below diagonal = SA-ZNE-loglin wins")
     ax.legend(fontsize=7)
 fig.tight_layout(); fig.savefig("figures/fig2_paired_scatter.png", dpi=130); plt.close(fig)
 
@@ -57,15 +56,25 @@ for ax, sch, lams in [(axes[0], "global", [1, 3, 5]), (axes[1], "local", [1, 2, 
     ax.set_ylabel("measured ratio  ln f_j / ln f_1"); ax.set_title(f"{sch} folding under drift"); ax.legend(fontsize=8)
 fig.tight_layout(); fig.savefig("figures/fig3_gauge_tracking.png", dpi=130); plt.close(fig)
 
-# Fig 4: error by Trotter depth for drift condition
+# Fig 4: error by Trotter depth (from per-problem table)
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
 for ax, cond in zip(axes, ["static", "drift"]):
-    for k, v in S.items():
-        b, c, sch = k.split("|")
-        if c != cond: continue
-        st = sorted(v["by_steps"]); best = v["best_nominal"]
-        ax.plot(st, [v["by_steps"][s][best] for s in st], "--o", ms=4, label=f"{b.replace('Fake','')}/{sch} {best}")
-        ax.plot(st, [v["by_steps"][s]["SA-ZNE"] for s in st], "-s", ms=4, label=f"{b.replace('Fake','')}/{sch} SA-ZNE")
+    for (b, sch), g in prob[prob.cond == cond].groupby(["backend", "scheme"]):
+        d = g.groupby("steps")[["PS+ZNE-lin", "SA-ZNE-loglin"]].mean()
+        l, = ax.plot(d.index, d["PS+ZNE-lin"], "--o", ms=4, label=f"{b.replace('Fake','')}/{sch} PS+ZNE-lin")
+        ax.plot(d.index, d["SA-ZNE-loglin"], "-s", ms=4, color=l.get_color(), label=f"{b.replace('Fake','')}/{sch} SA-ZNE-loglin")
     ax.set_yscale("log"); ax.set_xlabel("Trotter steps"); ax.set_ylabel("mean |error|"); ax.set_title(cond); ax.legend(fontsize=6)
 fig.tight_layout(); fig.savefig("figures/fig4_error_vs_depth.png", dpi=130); plt.close(fig)
+
+# Fig 5: drift penalty per cell
+fig, ax = plt.subplots(figsize=(8, 4.5)); cells = sorted(prob.groupby(["backend", "scheme"]).groups); w = .38
+for k, (mname, col) in enumerate([("PS+ZNE-lin", "#fc8d62"), ("SA-ZNE-loglin", "#d62728")]):
+    vals = []
+    for b, sch in cells:
+        dm = prob[(prob.backend == b) & (prob.scheme == sch)].groupby("cond")[mname].mean()
+        vals.append(dm["drift"] - dm["static"])
+    ax.bar(np.arange(len(cells)) + (k - .5) * w, vals, w, color=col, label=mname)
+ax.axhline(0, color="k", lw=.8); ax.set_xticks(range(len(cells))); ax.set_xticklabels([f"{b.replace('Fake','')}/{s}" for b, s in cells])
+ax.set_ylabel("MAE(drift) - MAE(static)"); ax.set_title("Accuracy lost to calibration drift between executions"); ax.legend()
+fig.tight_layout(); fig.savefig("figures/fig5_drift_penalty.png", dpi=130); plt.close(fig)
 print("figures written")

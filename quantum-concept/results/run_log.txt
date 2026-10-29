@@ -7,3 +7,5 @@ FakeTorino g=0.7: 360 records, 831s
 FakeTorino g=0.85: 420 records, 1235s
 FakeTorino g=1.0: 480 records, 1661s
 FakeTorino g=1.15: 540 records, 2255s
+FakeTorino g=1.3: 600 records, 2818s
+saved results/probs.npz 2818s

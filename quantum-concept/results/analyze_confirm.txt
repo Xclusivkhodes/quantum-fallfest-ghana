@@ -1,0 +1,169 @@
+wrote results/estimates_confirm.csv 144000
+
+== FakeSherbrooke|drift|global  (problems=60, best nominal-lambda baseline=PS+ZNE-rich)
+  PS+ZNE-rich    MAE=0.0230 [0.0214,0.0248] shot-sd=0.0252
+  SA-ZNE-loglin  MAE=0.0236 [0.0210,0.0268] shot-sd=0.0163
+  PS+ZNE-lin     MAE=0.0236 [0.0202,0.0277] shot-sd=0.0129
+  PS             MAE=0.0311 [0.0259,0.0366] shot-sd=0.0093
+  PS+ZNE-exp     MAE=0.0311 [0.0267,0.0359] shot-sd=0.0297
+  SA-ZNE-exp     MAE=0.0400 [0.0340,0.0471] shot-sd=0.0367
+  ZNE-exp        MAE=0.0428 [0.0336,0.0535] shot-sd=0.0552
+  SA-v1-lin      MAE=0.0556 [0.0479,0.0639] shot-sd=0.0216
+  ZNE-lin        MAE=0.0624 [0.0498,0.0765] shot-sd=0.0119
+  GUESS-Pi       MAE=0.0755 [0.0619,0.0900] shot-sd=0.0204
+  raw            MAE=0.0879 [0.0739,0.1030] shot-sd=0.0092
+  GUESS-Pi+PS    MAE=0.0899 [0.0744,0.1073] shot-sd=0.0294
+  SA-ZNE         MAE=0.0900 [0.0743,0.1071] shot-sd=0.0294
+  raw(noRM)      MAE=0.0948 [0.0798,0.1094] shot-sd=0.0089
+  SA-v1-exp      MAE=0.2219 [0.1521,0.3031] shot-sd=0.2234
+  SA-ZNE - PS+ZNE-rich: diff=+0.0670 CI[+0.0523,+0.0834] rel=+291% win=0.00 p=1.6e-11
+  SA-ZNE-loglin - PS+ZNE-rich: diff=+0.0006 CI[-0.0020,+0.0035] rel=+2% win=0.53 p=0.86
+  SA-ZNE-exp - PS+ZNE-rich: diff=+0.0170 CI[+0.0110,+0.0235] rel=+74% win=0.20 p=4.4e-09
+  SA-v1-lin - PS+ZNE-rich: diff=+0.0326 CI[+0.0258,+0.0398] rel=+141% win=0.05 p=4.7e-11
+
+== FakeSherbrooke|drift|local  (problems=60, best nominal-lambda baseline=PS+ZNE-lin)
+  PS+ZNE-lin     MAE=0.0187 [0.0164,0.0212] shot-sd=0.0157
+  SA-ZNE-loglin  MAE=0.0189 [0.0171,0.0208] shot-sd=0.0172
+  PS+ZNE-exp     MAE=0.0233 [0.0203,0.0268] shot-sd=0.0256
+  SA-ZNE-exp     MAE=0.0306 [0.0258,0.0359] shot-sd=0.0315
+  PS             MAE=0.0310 [0.0258,0.0367] shot-sd=0.0090
+  ZNE-exp        MAE=0.0343 [0.0292,0.0401] shot-sd=0.0340
+  PS+ZNE-rich    MAE=0.0393 [0.0362,0.0430] shot-sd=0.0448
+  SA-v1-lin      MAE=0.0399 [0.0342,0.0461] shot-sd=0.0256
+  ZNE-lin        MAE=0.0504 [0.0408,0.0606] shot-sd=0.0157
+  GUESS-Pi       MAE=0.0517 [0.0420,0.0624] shot-sd=0.0253
+  GUESS-Pi+PS    MAE=0.0622 [0.0510,0.0750] shot-sd=0.0332
+  SA-ZNE         MAE=0.0622 [0.0507,0.0750] shot-sd=0.0332
+  raw            MAE=0.0876 [0.0738,0.1019] shot-sd=0.0092
+  raw(noRM)      MAE=0.0945 [0.0801,0.1093] shot-sd=0.0089
+  SA-v1-exp      MAE=0.1154 [0.0781,0.1608] shot-sd=0.1410
+  SA-ZNE - PS+ZNE-lin: diff=+0.0436 CI[+0.0323,+0.0560] rel=+234% win=0.02 p=8e-11
+  SA-ZNE-loglin - PS+ZNE-lin: diff=+0.0002 CI[-0.0013,+0.0017] rel=+1% win=0.40 p=0.37
+  SA-ZNE-exp - PS+ZNE-lin: diff=+0.0120 CI[+0.0076,+0.0168] rel=+64% win=0.13 p=5.5e-08
+  SA-v1-lin - PS+ZNE-lin: diff=+0.0212 CI[+0.0156,+0.0276] rel=+114% win=0.08 p=1.6e-09
+
+== FakeSherbrooke|static|global  (problems=60, best nominal-lambda baseline=PS+ZNE-rich)
+  PS+ZNE-rich    MAE=0.0209 [0.0192,0.0227] shot-sd=0.0212
+  SA-ZNE-loglin  MAE=0.0223 [0.0195,0.0257] shot-sd=0.0146
+  PS+ZNE-lin     MAE=0.0231 [0.0195,0.0272] shot-sd=0.0110
+  PS+ZNE-exp     MAE=0.0279 [0.0241,0.0321] shot-sd=0.0217
+  ZNE-exp        MAE=0.0295 [0.0235,0.0363] shot-sd=0.0274
+  PS             MAE=0.0311 [0.0260,0.0368] shot-sd=0.0085
+  SA-ZNE-exp     MAE=0.0380 [0.0324,0.0440] shot-sd=0.0308
+  SA-v1-lin      MAE=0.0535 [0.0464,0.0617] shot-sd=0.0190
+  ZNE-lin        MAE=0.0626 [0.0505,0.0762] shot-sd=0.0082
+  GUESS-Pi       MAE=0.0738 [0.0603,0.0881] shot-sd=0.0180
+  GUESS-Pi+PS    MAE=0.0864 [0.0711,0.1028] shot-sd=0.0250
+  SA-ZNE         MAE=0.0864 [0.0714,0.1036] shot-sd=0.0250
+  raw            MAE=0.0878 [0.0742,0.1025] shot-sd=0.0068
+  raw(noRM)      MAE=0.0947 [0.0805,0.1095] shot-sd=0.0065
+  SA-v1-exp      MAE=0.2001 [0.1417,0.2641] shot-sd=0.1630
+  SA-ZNE - PS+ZNE-rich: diff=+0.0655 CI[+0.0515,+0.0813] rel=+314% win=0.07 p=3.1e-11
+  SA-ZNE-loglin - PS+ZNE-rich: diff=+0.0014 CI[-0.0014,+0.0044] rel=+7% win=0.40 p=0.42
+  SA-ZNE-exp - PS+ZNE-rich: diff=+0.0171 CI[+0.0118,+0.0229] rel=+82% win=0.13 p=2.2e-09
+  SA-v1-lin - PS+ZNE-rich: diff=+0.0326 CI[+0.0260,+0.0400] rel=+156% win=0.10 p=7.6e-11
+
+== FakeSherbrooke|static|local  (problems=60, best nominal-lambda baseline=PS+ZNE-lin)
+  PS+ZNE-lin     MAE=0.0185 [0.0163,0.0211] shot-sd=0.0144
+  SA-ZNE-loglin  MAE=0.0187 [0.0171,0.0205] shot-sd=0.0166
+  PS+ZNE-exp     MAE=0.0220 [0.0192,0.0252] shot-sd=0.0230
+  ZNE-exp        MAE=0.0307 [0.0249,0.0379] shot-sd=0.0281
+  PS             MAE=0.0311 [0.0259,0.0366] shot-sd=0.0087
+  SA-ZNE-exp     MAE=0.0311 [0.0265,0.0367] shot-sd=0.0339
+  PS+ZNE-rich    MAE=0.0365 [0.0339,0.0396] shot-sd=0.0403
+  SA-v1-lin      MAE=0.0398 [0.0341,0.0463] shot-sd=0.0238
+  GUESS-Pi       MAE=0.0498 [0.0400,0.0607] shot-sd=0.0213
+  ZNE-lin        MAE=0.0506 [0.0411,0.0615] shot-sd=0.0107
+  GUESS-Pi+PS    MAE=0.0625 [0.0510,0.0755] shot-sd=0.0303
+  SA-ZNE         MAE=0.0625 [0.0506,0.0752] shot-sd=0.0303
+  raw            MAE=0.0882 [0.0747,0.1027] shot-sd=0.0070
+  raw(noRM)      MAE=0.0951 [0.0801,0.1096] shot-sd=0.0068
+  SA-v1-exp      MAE=0.1040 [0.0736,0.1408] shot-sd=0.1055
+  SA-ZNE - PS+ZNE-lin: diff=+0.0440 CI[+0.0327,+0.0571] rel=+238% win=0.03 p=6.9e-11
+  SA-ZNE-loglin - PS+ZNE-lin: diff=+0.0002 CI[-0.0016,+0.0019] rel=+1% win=0.35 p=0.096
+  SA-ZNE-exp - PS+ZNE-lin: diff=+0.0126 CI[+0.0080,+0.0178] rel=+68% win=0.12 p=7.1e-08
+  SA-v1-lin - PS+ZNE-lin: diff=+0.0213 CI[+0.0148,+0.0285] rel=+115% win=0.10 p=2.5e-09
+
+== FakeTorino|drift|global  (problems=60, best nominal-lambda baseline=PS+ZNE-lin)
+  SA-ZNE-loglin  MAE=0.0114 [0.0105,0.0124] shot-sd=0.0113
+  PS+ZNE-lin     MAE=0.0134 [0.0124,0.0145] shot-sd=0.0132
+  SA-ZNE-exp     MAE=0.0184 [0.0157,0.0216] shot-sd=0.0203
+  PS             MAE=0.0187 [0.0158,0.0216] shot-sd=0.0089
+  PS+ZNE-exp     MAE=0.0193 [0.0170,0.0221] shot-sd=0.0233
+  PS+ZNE-rich    MAE=0.0227 [0.0209,0.0244] shot-sd=0.0273
+  SA-v1-lin      MAE=0.0300 [0.0261,0.0343] shot-sd=0.0156
+  GUESS-Pi       MAE=0.0302 [0.0249,0.0359] shot-sd=0.0152
+  ZNE-exp        MAE=0.0327 [0.0274,0.0385] shot-sd=0.0390
+  ZNE-lin        MAE=0.0363 [0.0285,0.0447] shot-sd=0.0170
+  GUESS-Pi+PS    MAE=0.0378 [0.0306,0.0455] shot-sd=0.0192
+  SA-ZNE         MAE=0.0378 [0.0311,0.0453] shot-sd=0.0192
+  raw            MAE=0.0594 [0.0492,0.0702] shot-sd=0.0125
+  raw(noRM)      MAE=0.0706 [0.0595,0.0826] shot-sd=0.0118
+  SA-v1-exp      MAE=80010706.4012 [0.0591,240032119.0680] shot-sd=357818756.6302
+  SA-ZNE - PS+ZNE-lin: diff=+0.0245 CI[+0.0180,+0.0314] rel=+183% win=0.07 p=3.8e-11
+  SA-ZNE-loglin - PS+ZNE-lin: diff=-0.0020 CI[-0.0026,-0.0014] rel=-15% win=0.78 p=6e-08
+  SA-ZNE-exp - PS+ZNE-lin: diff=+0.0050 CI[+0.0029,+0.0076] rel=+38% win=0.30 p=5.8e-05
+  SA-v1-lin - PS+ZNE-lin: diff=+0.0167 CI[+0.0129,+0.0209] rel=+125% win=0.08 p=1.7e-10
+
+== FakeTorino|drift|local  (problems=60, best nominal-lambda baseline=PS+ZNE-lin)
+  SA-ZNE-loglin  MAE=0.0134 [0.0125,0.0143] shot-sd=0.0159
+  PS+ZNE-lin     MAE=0.0135 [0.0126,0.0144] shot-sd=0.0161
+  PS             MAE=0.0183 [0.0155,0.0212] shot-sd=0.0089
+  PS+ZNE-exp     MAE=0.0208 [0.0167,0.0256] shot-sd=0.0289
+  SA-ZNE-exp     MAE=0.0227 [0.0180,0.0287] shot-sd=0.0289
+  GUESS-Pi       MAE=0.0238 [0.0204,0.0277] shot-sd=0.0186
+  SA-v1-lin      MAE=0.0277 [0.0247,0.0307] shot-sd=0.0225
+  GUESS-Pi+PS    MAE=0.0305 [0.0260,0.0356] shot-sd=0.0244
+  SA-ZNE         MAE=0.0305 [0.0257,0.0358] shot-sd=0.0244
+  ZNE-lin        MAE=0.0308 [0.0254,0.0365] shot-sd=0.0214
+  ZNE-exp        MAE=0.0328 [0.0276,0.0387] shot-sd=0.0405
+  PS+ZNE-rich    MAE=0.0375 [0.0346,0.0407] shot-sd=0.0461
+  raw            MAE=0.0589 [0.0491,0.0695] shot-sd=0.0127
+  SA-v1-exp      MAE=0.0613 [0.0428,0.0850] shot-sd=0.0754
+  raw(noRM)      MAE=0.0701 [0.0590,0.0819] shot-sd=0.0121
+  SA-ZNE - PS+ZNE-lin: diff=+0.0170 CI[+0.0127,+0.0217] rel=+126% win=0.00 p=1.6e-11
+  SA-ZNE-loglin - PS+ZNE-lin: diff=-0.0001 CI[-0.0009,+0.0007] rel=-1% win=0.42 p=0.47
+  SA-ZNE-exp - PS+ZNE-lin: diff=+0.0092 CI[+0.0046,+0.0148] rel=+68% win=0.20 p=1.9e-07
+  SA-v1-lin - PS+ZNE-lin: diff=+0.0142 CI[+0.0120,+0.0167] rel=+105% win=0.00 p=1.6e-11
+
+== FakeTorino|static|global  (problems=60, best nominal-lambda baseline=PS+ZNE-lin)
+  PS+ZNE-lin     MAE=0.0107 [0.0100,0.0115] shot-sd=0.0107
+  SA-ZNE-loglin  MAE=0.0109 [0.0102,0.0117] shot-sd=0.0112
+  ZNE-exp        MAE=0.0160 [0.0135,0.0190] shot-sd=0.0196
+  PS+ZNE-rich    MAE=0.0173 [0.0162,0.0185] shot-sd=0.0201
+  PS             MAE=0.0183 [0.0156,0.0210] shot-sd=0.0080
+  PS+ZNE-exp     MAE=0.0186 [0.0148,0.0241] shot-sd=0.0260
+  SA-ZNE-exp     MAE=0.0204 [0.0158,0.0271] shot-sd=0.0304
+  GUESS-Pi       MAE=0.0297 [0.0247,0.0355] shot-sd=0.0128
+  SA-v1-lin      MAE=0.0302 [0.0264,0.0346] shot-sd=0.0148
+  ZNE-lin        MAE=0.0342 [0.0268,0.0419] shot-sd=0.0085
+  GUESS-Pi+PS    MAE=0.0376 [0.0305,0.0452] shot-sd=0.0164
+  SA-ZNE         MAE=0.0376 [0.0309,0.0451] shot-sd=0.0164
+  raw            MAE=0.0597 [0.0499,0.0699] shot-sd=0.0070
+  SA-v1-exp      MAE=0.0667 [0.0513,0.0852] shot-sd=0.0459
+  raw(noRM)      MAE=0.0709 [0.0596,0.0829] shot-sd=0.0066
+  SA-ZNE - PS+ZNE-lin: diff=+0.0269 CI[+0.0200,+0.0345] rel=+252% win=0.00 p=1.6e-11
+  SA-ZNE-loglin - PS+ZNE-lin: diff=+0.0002 CI[-0.0000,+0.0005] rel=+2% win=0.32 p=0.0023
+  SA-ZNE-exp - PS+ZNE-lin: diff=+0.0098 CI[+0.0055,+0.0162] rel=+91% win=0.05 p=6.3e-11
+  SA-v1-lin - PS+ZNE-lin: diff=+0.0195 CI[+0.0153,+0.0239] rel=+183% win=0.02 p=1.8e-11
+
+== FakeTorino|static|local  (problems=60, best nominal-lambda baseline=PS+ZNE-lin)
+  PS+ZNE-lin     MAE=0.0105 [0.0100,0.0111] shot-sd=0.0124
+  SA-ZNE-loglin  MAE=0.0122 [0.0115,0.0129] shot-sd=0.0139
+  PS+ZNE-exp     MAE=0.0165 [0.0121,0.0243] shot-sd=0.0275
+  PS             MAE=0.0184 [0.0157,0.0213] shot-sd=0.0078
+  ZNE-exp        MAE=0.0195 [0.0145,0.0274] shot-sd=0.0272
+  SA-ZNE-exp     MAE=0.0223 [0.0156,0.0344] shot-sd=0.0343
+  GUESS-Pi       MAE=0.0230 [0.0197,0.0269] shot-sd=0.0160
+  SA-v1-lin      MAE=0.0254 [0.0229,0.0281] shot-sd=0.0192
+  ZNE-lin        MAE=0.0276 [0.0220,0.0334] shot-sd=0.0102
+  GUESS-Pi+PS    MAE=0.0276 [0.0234,0.0324] shot-sd=0.0200
+  SA-ZNE         MAE=0.0276 [0.0233,0.0323] shot-sd=0.0200
+  PS+ZNE-rich    MAE=0.0300 [0.0282,0.0319] shot-sd=0.0367
+  SA-v1-exp      MAE=0.0465 [0.0357,0.0606] shot-sd=0.0350
+  raw            MAE=0.0594 [0.0495,0.0702] shot-sd=0.0068
+  raw(noRM)      MAE=0.0707 [0.0596,0.0823] shot-sd=0.0064
+  SA-ZNE - PS+ZNE-lin: diff=+0.0171 CI[+0.0129,+0.0218] rel=+162% win=0.02 p=1.7e-11
+  SA-ZNE-loglin - PS+ZNE-lin: diff=+0.0016 CI[+0.0012,+0.0021] rel=+16% win=0.10 p=3.5e-08
+  SA-ZNE-exp - PS+ZNE-lin: diff=+0.0118 CI[+0.0052,+0.0226] rel=+112% win=0.05 p=9.3e-11
+  SA-v1-lin - PS+ZNE-lin: diff=+0.0149 CI[+0.0124,+0.0175] rel=+141% win=0.02 p=1.7e-11
