@@ -41,13 +41,14 @@ for name,g in geoms.items():
     from qiskit.quantum_info import Statevector
     Hm=H.to_matrix(); Gs=[op.to_matrix() for op in ans.operators]
     psi0=Statevector(ans.initial_state).data; nfev=[0]
+    eig=[np.linalg.eigh(G) for G in Gs]
     def state(t):
         v=psi0.copy()
-        for th,G in zip(t,Gs): v=expm(-1j*th*G)@v
+        for th,(lam,V) in zip(t,eig): v=V@(np.exp(-1j*th*lam)*(V.conj().T@v))
         return v
     def f(t):
         nfev[0]+=1; v=state(t); return float(np.real(np.vdot(v,Hm@v)))
-    r=minimize(f, np.zeros(ans.num_parameters), method="BFGS", options={"gtol":1e-7})
+    r=minimize(f, np.zeros(ans.num_parameters), method="L-BFGS-B", options={"ftol":1e-12,"gtol":1e-6,"maxiter":500})
     est=StatevectorEstimator(); e_check=float(est.run([(ans,H,r.x)]).result()[0].data.evs)
     print(name,"fast-sim",r.fun,"qiskit-circuit",e_check, flush=True)
     r.fun=e_check
