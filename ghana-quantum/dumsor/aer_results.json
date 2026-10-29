@@ -1,0 +1,38 @@
+[
+  {
+    "p": 1,
+    "sim": "ideal",
+    "shots": 20000,
+    "p_opt": 0.0037,
+    "exp_cost": 4337.282500000004,
+    "best_cost": 175.0,
+    "twoq_gates": 36
+  },
+  {
+    "p": 1,
+    "sim": "noisy_1q0.1%_2q1%",
+    "shots": 20000,
+    "p_opt": 0.0033,
+    "exp_cost": 4805.447500000012,
+    "best_cost": 175.0,
+    "twoq_gates": 36
+  },
+  {
+    "p": 3,
+    "sim": "ideal",
+    "shots": 20000,
+    "p_opt": 0.0087,
+    "exp_cost": 2479.866250000003,
+    "best_cost": 175.0,
+    "twoq_gates": 108
+  },
+  {
+    "p": 3,
+    "sim": "noisy_1q0.1%_2q1%",
+    "shots": 20000,
+    "p_opt": 0.0057,
+    "exp_cost": 4617.368750000007,
+    "best_cost": 175.0,
+    "twoq_gates": 108
+  }
+]

@@ -1,0 +1,9 @@
+FakeSherbrooke g=0.7: 60 records, 75s
+FakeSherbrooke g=0.85: 120 records, 161s
+FakeSherbrooke g=1.0: 180 records, 252s
+FakeSherbrooke g=1.15: 240 records, 347s
+FakeSherbrooke g=1.3: 300 records, 470s
+FakeTorino g=0.7: 360 records, 831s
+FakeTorino g=0.85: 420 records, 1235s
+FakeTorino g=1.0: 480 records, 1661s
+FakeTorino g=1.15: 540 records, 2255s
